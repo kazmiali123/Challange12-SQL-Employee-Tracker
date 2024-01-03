@@ -93,7 +93,6 @@ async function addNewRole () {
             data = rows;       
             const choices = [];
             rows.forEach((row)=> choices.push(row.department_name));
-            console.log(choices);
             
             const questions = [{
                 type: 'input',
@@ -135,8 +134,7 @@ async function addNewRole () {
                     department_ID: departmentID,
                     department_name: departmentName
                 }
-    
-                console.log(addRoleParameters);
+
                 return addRoleParameters;
             })
             .then (({role, salary, department_ID, department_name})=>{
@@ -172,7 +170,6 @@ async function addNewEmployee () {
     await new Promise(resolve => {
         connection.promise().query('SELECT * FROM `roles`')
         .then (([rows, fields]) => {
-            // console.log(rows);
             rolesData = rows;   
             rows.forEach((row)=> roleChoices.push(row.role_title));
             resolve();            
@@ -183,7 +180,6 @@ async function addNewEmployee () {
     await new Promise(resolve => {
         connection.promise().query('SELECT * FROM `employees`')
         .then (([rows, fields]) => {
-            // console.log(rows);
             employeesData = rows;   
             rows.forEach((row)=> employeeChoices.push(row.last_name));  
             resolve();          
@@ -241,7 +237,6 @@ async function addNewEmployee () {
                 role_title: roleTitle
             }
 
-            console.log(addEmployeeParameters);
             return addEmployeeParameters;
         })
         .then (({first_name, last_name, role_id, manager_id, role_title})=>{
@@ -278,7 +273,6 @@ async function updateEmployeeRole () {
     await new Promise(resolve => {
         connection.promise().query('SELECT * FROM `roles`')
         .then (([rows, fields]) => {
-            // console.log(rows);
             rolesData = rows;   
             rows.forEach((row)=> roleChoices.push(row.role_title));
             resolve();            
@@ -330,7 +324,6 @@ async function updateEmployeeRole () {
                 employee_name: employeeName             
             }
 
-            console.log(updateRoleParameters);
             return updateRoleParameters;
         })
         .then (({role_id, role_title, employee_id, employee_name})=>{            
